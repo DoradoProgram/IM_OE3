@@ -12,8 +12,8 @@ namespace LoginApp.Api.Data
         public async Task<UserRecord> GetByUsernameAsync(string username)
         {
             using var conn = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
-            string sql = "SELECT * FROM Users WHERE Username = @Username";
-            return await conn.QueryFirstOrDefaultAsync<UserRecord>(sql, new { Username = username});
+            string sql = "SELECT * FROM users_tbl WHERE Username = @Username";
+            return await conn.QueryFirstOrDefaultAsync<UserRecord?>(sql, new { Username = username });
         }
     }
 }
