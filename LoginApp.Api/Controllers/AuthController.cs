@@ -16,7 +16,7 @@ namespace LoginApp.Api.Controllers
             var user = await _repo.GetByUsernameAsync(request.Username);
             if (user == null) return Unauthorized("User not found");
 
-            if (user.PasswordHash != request.Password)
+            if (user.Password != request.Password)
                 return Unauthorized("Invalid username or password.");
             return Ok(new { message = "Login Successful", username = user.Username});
         }
